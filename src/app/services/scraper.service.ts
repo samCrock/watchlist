@@ -9,11 +9,13 @@ import { Observable } from 'rxjs';
 })
 export class ScraperService {
 
+  private proxyurl = "https://cors-anywhere.herokuapp.com/";
+
   constructor(private http: HttpClient) { }
 
   searchIMDB(_searchString: string) {
     return Observable.create(observer => {
-      const url = 'https://v2.sg.media-imdb.com/suggests/' + _searchString.substr(0, 1) + '/' +
+      const url = this.proxyurl + 'https://v2.sg.media-imdb.com/suggests/' + _searchString.substr(0, 1) + '/' +
         _searchString + '.json?callback=imdb$' + _searchString + '&_=1546960801764';
       return this.http.get<any>(url, { responseType: 'text' as 'json' })
         .subscribe(response => {
@@ -29,7 +31,7 @@ export class ScraperService {
 
   getDetails(imdbId: string) {
     return Observable.create(observer => {
-      const url = 'https://www.imdb.com/title/' + imdbId;
+      const url = this.proxyurl + 'https://www.imdb.com/title/' + imdbId;
       return this.http.get<any>(url, { responseType: 'text' as 'json' })
         .subscribe(response => {
           const $ = cheerio.load(response);
