@@ -1,0 +1,45 @@
+.watchlist-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.watchlist-full-width {
+  width: 100%;
+}
+
+.watchlist-option-img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+[dir='rtl'] .watchlist-option-img {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.watchlist-option-img {
+  width: 60px;
+  height: auto;
+  border-radius: 2px;
+}
+
+.search-progress-bar {
+  position: relative;
+  top: -21px;
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
+
+
+// Material overrides
+.mat-option {
+  height: auto;
+  padding: 10px 20px;
+}
+

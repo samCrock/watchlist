@@ -1,0 +1,39 @@
+.card {
+  margin: 20px;
+}
+
+.mat-card-title {
+  font-size: xx-large;
+}
+
+.mat-card-content img {
+  width: 180px;
+  height: auto;
+  border-radius: 2px;
+}
+
+label {
+  padding: 0 10px;
+}
+
+.detail-genres {
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: 600;
+  padding: 10px;
+  color: rgba(0, 0, 0, 0.64);
+}
+
+.detail-key {
+  text-transform: capitalize;
+}
+
+.detail-value {
+  padding: 0 6px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.action-btn {
+  top: 20px;
+}
+

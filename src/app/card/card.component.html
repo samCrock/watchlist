@@ -1,0 +1,21 @@
+<mat-card class="card">
+  <mat-card-content>
+    <div fxLayout="row">
+      <img [src]="data.poster" alt="{{ data.title }}">
+    </div>
+    <div class="overlay" (click)="viewDetail()">
+      <mat-card-header fxLayout="column" fxLayoutAlign="center">
+        <mat-card-title>{{ data.title }}</mat-card-title>
+        <mat-card-subtitle>{{ data.release }}</mat-card-subtitle>
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="5px">
+          <button mat-mini-fab class="action-btn" (click)="markAsViewed()">
+            <mat-icon>check</mat-icon>
+          </button>
+          <button mat-mini-fab class="action-btn" (click)="remove()">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-card-header>
+    </div>
+  </mat-card-content>
+</mat-card>

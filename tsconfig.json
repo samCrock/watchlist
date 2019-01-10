@@ -10,6 +10,11 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
+    "paths": {
+      "parse5": ["node_modules/parse5"],
+      "htmlparser2": ["node_modules/htmlparser2"]
+    },
+    "types": ["node"],
     "typeRoots": [
       "node_modules/@types"
     ],
