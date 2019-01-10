@@ -7,9 +7,9 @@ import { ScraperService } from './services/scraper.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  private selected: any;
-  private storage = [];
-  private loading: boolean;
+  public selected: any;
+  public storage = [];
+  public loading: boolean;
 
   constructor(private scraperService: ScraperService) { }
 
