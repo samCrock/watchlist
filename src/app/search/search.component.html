@@ -1,11 +1,13 @@
 <form class="watchlist-form">
   <mat-form-field class="watchlist-full-width">
-    <input matInput id="search_input" placeholder="Search" aria-label="Search imdb" [matAutocomplete]="auto" [formControl]="searchCtrl">
+    <input matInput id="search_input" placeholder="Search movie" aria-label="Search imdb" [matAutocomplete]="auto" [formControl]="searchCtrl">
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let result of filteredResults | async" (onSelectionChange)="onSelection(result)">
-        <img class="watchlist-option-img" aria-hidden [src]="result.i[0]" height="25">
-        <span>{{ result.l }}</span> |
-        <small>{{ result.s }}</small>
+        <div *ngIf="result.i">
+          <img class="watchlist-option-img" aria-hidden [src]="result.i[0]" height="25">
+          <span>{{ result.l }}</span> |
+          <small>{{ result.s }}</small>
+        </div>
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>

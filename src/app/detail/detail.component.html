@@ -1,39 +1,50 @@
 <mat-card class="card">
-  <mat-card-content>
-    <div fxLayout="row">
-      <img [src]="detail.poster" alt="{{ detail.title }}">
+  <div fxLayout.lt-sm="column" fxLayout="row" fxLayoutAlign="start">
 
+    <mat-card-header>
       <div fxLayout="column" fxFlex fxLayoutAlign="center">
-        <mat-card-header>
-          <mat-card-title>{{ detail.title }}</mat-card-title>
-          <mat-card-subtitle>{{ detail.release }}</mat-card-subtitle>
-        </mat-card-header>
-
-        <div fxLayout="row">
-          <label class="detail-genres" *ngFor="let genre of detail.genres">{{ genre }}</label>
-        </div>
-        <div fxLayout="row" *ngFor="let item of getDynamicDetailValues() | keyvalue">
-          <div fxFlex="15">
-            <label class="detail-key">{{ item.key }}</label>
-          </div>
-          <div fxFlex="85">
-            <label class="detail-value" *ngFor="let v of item.value">{{ v }}</label>
-          </div>
-        </div>
-
-        <div fxLayout="row" fxLayoutAlign="center" *ngIf="!isPresent()">
-          <button mat-fab class="action-btn" (click)="add()">
+        <img [src]="detail.poster" alt="{{ detail.title }}">
+        <div fxLayoutAlign="center">
+          <button *ngIf="!isPresent()" mat-fab (click)="add()">
             <mat-icon>add</mat-icon>
           </button>
         </div>
       </div>
+    </mat-card-header>
 
-      <button mat-icon-button (click)="close()">
-        <mat-icon>close</mat-icon>
-      </button>
+    <mat-card-content>
 
-    </div>
+      <div fxLayout="column" fxFlex fxLayoutAlign="center">
+        <mat-card-title>{{ detail.title }}</mat-card-title>
+        <mat-card-subtitle>{{ detail.release }}</mat-card-subtitle>
 
-  </mat-card-content>
+        <div fxLayoutGap="20px">
+          <div fxLayout="row">
+            <label class="detail-genres" *ngFor="let genre of detail.genres">{{ genre }}</label>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutGap="20px">
+          <div fxLayout="row" *ngFor="let item of getDynamicDetailValues() | keyvalue">
+            <div fxFlex="30">
+              <label class="detail-key">{{ item.key }}</label>
+            </div>
+            <div fxFlex="70" fxLayout="column">
+              <label class="detail-value" *ngFor="let v of item.value">{{ v }}</label>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </mat-card-content>
+
+
+    <button mat-icon-button (click)="close()" id="close_btn">
+      <mat-icon>close</mat-icon>
+    </button>
+
+  </div>
+
 
 </mat-card>

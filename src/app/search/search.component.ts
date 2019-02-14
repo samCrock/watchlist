@@ -15,7 +15,6 @@ export class SearchComponent implements AfterContentInit {
   filteredResults: Observable<any[]>;
   @Output() selectEmit: EventEmitter<any> = new EventEmitter<any>();
   @Input() loading: boolean;
-  // private selected;
 
   constructor(private scraperService: ScraperService) {
     this.filteredResults = this.searchCtrl.valueChanges
@@ -23,14 +22,20 @@ export class SearchComponent implements AfterContentInit {
         startWith(''),
         debounceTime(500),
         filter(_searchString => _searchString && _searchString.length > 1),
-        switchMap( value => this.scraperService.searchIMDB(value))
+        switchMap(value => {
+          this.loading = true;
+          return this.scraperService.searchIMDB(value.trim());
+        })
       );
+    this.filteredResults.subscribe(() => {
+      this.loading = false;
+    });
   }
 
   ngAfterContentInit() {
     setTimeout(() => {
       document.getElementById('search_input').focus();
-  }, 500);
+    }, 500);
   }
 
   onSelection(result) {

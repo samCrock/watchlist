@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import * as cheerio from 'cheerio';
-import * as puppeteer from 'puppeteer';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -19,14 +18,17 @@ export class ScraperService {
         _searchString + '.json?callback=imdb$' + _searchString + '&_=1546960801764';
       return this.http.get<any>(url, { responseType: 'text' as 'json' })
         .subscribe(response => {
-          const splitter = 'imdb$' + _searchString + '({"v":1,"q":"' + _searchString + '","d":';
+          console.log('Response =>', response);
+          const splitter = 'imdb$' + this.getUnderscored(_searchString) + '({"v":1,"q":"' + this.getUnderscored(_searchString) + '","d":';
           let parsed = response.split(splitter)[1];
           parsed = JSON.parse(parsed.substr(0, parsed.length - 2));
-          parsed['imdbId'] = parsed['id'];
-          console.log('Response =>', parsed);
-          observer.next(parsed);
+          observer.next(parsed.filter(p => p['q'] === 'feature'));
         });
     });
+  }
+
+  getUnderscored(searchString: string) {
+    return searchString.replace(' ', '_');
   }
 
   getDetails(imdbId: string) {

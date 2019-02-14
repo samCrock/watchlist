@@ -2,14 +2,20 @@
 @import "./theme.scss";
 
 $color-bg: rgb(84, 96, 92);
-$accent: map-get($my-app-theme, accent);
+$accent: map-get($dark-theme, accent);
 
-body {
-  // background: $color-bg;
+html, body {
+  background-color: mat-color($dark-primary, 900);
 }
 
 ::selection {
   background: mat-color($accent);
+}
+
+.mat-card {
+  background: mat-color($dark-primary, 800) !important;
+  max-width: 992px;
+  margin: auto;
 }
 
 .mat-autocomplete-panel {
@@ -30,3 +36,33 @@ body {
   padding: 0 10px;
 }
 
+.mat-input-element {
+  color: mat-color($dark-accent, 200) !important;
+}
+
+.mat-icon-button {
+  color: mat-color($dark-accent, 200) !important;
+}
+
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: mat-color($dark-primary, 600); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: mat-color($dark-accent, 200); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: mat-color($dark-accent, 400); 
+}

@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "Watchlist",
+  "description": "Movies watchlist extension",
+  "version": "0.0.1",
+  "author": "Sam Lombardi",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "browser_action": {
+    "default_icon": "assets/icon.png",
+    "default_title": "Watchlist - Don't forget your movies",
+    "default_popup": "index.html"
+  },
+  "web_accessible_resources": [
+    "*",
+    "assets/*",
+    "images/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "all_frames": true,
+      "js": [
+        "main.js",
+        "polyfills.js",
+        "runtime.js",
+        "vendor.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "activeTab"
+  ]
+}
