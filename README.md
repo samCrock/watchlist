@@ -1,6 +1,6 @@
 # Watchlist
 
-Save locally a list of movies you want to watch
+Save locally a list of movies or tv shows you want to watch
 
 ## Local Development Mode
 
