@@ -21,8 +21,12 @@ export class ScraperService {
           console.log('Response =>', response);
           const splitter = 'imdb$' + this.getUnderscored(_searchString) + '({"v":1,"q":"' + this.getUnderscored(_searchString) + '","d":';
           let parsed = response.split(splitter)[1];
-          parsed = JSON.parse(parsed.substr(0, parsed.length - 2));
-          observer.next(parsed.filter(p => p['q'] === 'feature' || p['q'] === 'TV series'));
+          if (parsed) {
+            parsed = JSON.parse(parsed.substr(0, parsed.length - 2));
+            observer.next(parsed.filter(p => p['q'] === 'feature' || p['q'] === 'TV series'));
+          } else {
+            observer.next();
+          }
         });
     });
   }
