@@ -1,7 +1,7 @@
 <mat-card class="card">
   <div fxLayout.lt-sm="column" fxLayout="row" fxLayoutAlign="start">
 
-    <mat-card-header>
+    <div>
       <div fxLayout="column" fxFlex fxLayoutAlign="center">
         <img [src]="detail.poster" alt="{{ detail.title }}">
         <div fxLayoutAlign="center">
@@ -10,7 +10,7 @@
           </button>
         </div>
       </div>
-    </mat-card-header>
+    </div>
 
     <mat-card-content>
 
@@ -26,10 +26,10 @@
 
         <div fxLayout="column" fxLayoutGap="20px">
           <div fxLayout="row" *ngFor="let item of getDynamicDetailValues() | keyvalue">
-            <div fxFlex="30">
+            <div fxFlex="35">
               <label class="detail-key">{{ item.key }}</label>
             </div>
-            <div fxFlex="70" fxLayout="column">
+            <div fxFlex="65" fxLayout="column">
               <label class="detail-value" *ngFor="let v of item.value">{{ v }}</label>
             </div>
           </div>

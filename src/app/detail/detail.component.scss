@@ -3,6 +3,10 @@
   font-size: xx-large;
 }
 
+.mat-card-content {
+  padding: 0 20px 0;
+}
+
 .mat-card-content img {
   width: 180px;
   height: fit-content;
@@ -10,7 +14,7 @@
 }
 
 label {
-  padding: 0 10px;
+  padding: 0 10px 0 0 ;
 }
 
 img {
@@ -24,8 +28,7 @@ img {
   text-transform: uppercase;
   font-size: small;
   font-weight: 600;
-  padding: 10px 10px 20px 10px;
-  // color: rgba(0, 0, 0, 0.64);
+  padding: 0px 10px 20px 0px;
 }
 
 .detail-key {
