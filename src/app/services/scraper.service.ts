@@ -22,13 +22,13 @@ export class ScraperService {
           const splitter = 'imdb$' + this.getUnderscored(_searchString) + '({"v":1,"q":"' + this.getUnderscored(_searchString) + '","d":';
           let parsed = response.split(splitter)[1];
           parsed = JSON.parse(parsed.substr(0, parsed.length - 2));
-          observer.next(parsed.filter(p => p['q'] === 'feature'));
+          observer.next(parsed.filter(p => p['q'] === 'feature' || p['q'] === 'TV series'));
         });
     });
   }
 
   getUnderscored(searchString: string) {
-    return searchString.replace(' ', '_');
+    return searchString.replace(/ /g, '_');
   }
 
   getDetails(imdbId: string) {
@@ -38,7 +38,7 @@ export class ScraperService {
         .subscribe(response => {
           const $ = cheerio.load(response);
           const result = {};
-          console.log('title', $('.title_wrapper h1')[0]);
+          console.log('page', $(''));
           result['imdbId'] = imdbId;
           result['title'] = $('.title_wrapper h1')[0].children[0].data.trim();
           result['time'] = $('time')[0] ? $('time')[0].children[0].data.trim() : '';
@@ -52,7 +52,7 @@ export class ScraperService {
             }
           });
 
-          result['poster'] = $('.slate_wrapper .poster a img')[0].attribs.src;
+          result['poster'] = $('.poster a img')[0].attribs.src;
           // result['trailer'] = 'https://www.imdb.com' + $('.slate_wrapper .slate a')[0].attribs.href;
 
           $('.credit_summary_item').filter((i, c) => {
