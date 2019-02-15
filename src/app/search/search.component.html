@@ -1,6 +1,6 @@
 <form class="watchlist-form">
   <mat-form-field class="watchlist-full-width">
-    <input matInput id="search_input" placeholder="Search a movie" aria-label="Search imdb" [matAutocomplete]="auto" [formControl]="searchCtrl">
+    <input matInput id="search_input" placeholder="Search a movie or tv show" aria-label="Search imdb" [matAutocomplete]="auto" [formControl]="searchCtrl">
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let result of filteredResults | async" (onSelectionChange)="onSelection(result)">
         <div *ngIf="result.i">
